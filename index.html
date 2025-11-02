@@ -240,14 +240,14 @@ async function showPoem(){
 
 // ⏯️ Start button triggers music + poem
 startBtn.onclick = async () => {
-  clearEverything();
-  music.currentTime = 0;
+  clearEverything(false); // clears screen but keeps music ready
+  music.currentTime = 0; // reset to start
   try {
-    await music.play();
-  } catch (err) {
-    console.log("Autoplay blocked, waiting for user interaction...");
+    await music.play(); // start music on this click
+  } catch(err) {
+    console.log("Music blocked by browser until user clicks");
   }
-  await showPoem();
+  await showPoem(); // show the poem and confetti
 };
 
 // 🔁 Replay button
